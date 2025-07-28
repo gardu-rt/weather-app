@@ -6,16 +6,64 @@ img {
   height: 120px;
 }
 
+h2 {
+  margin-top: 0;
+  margin-bottom: 24px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.container {
+  margin: 24px auto;
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  color: hsla(269, 19%, 21%, 0.527);
+}
+
+form {
+  display: flex;
+  gap: 5px;
+}
+
+input {
+  flex: 1;
+  color: white;
+  box-sizing: border-box;
+  background-color: hsla(269, 19%, 21%, 0.527);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 5px;
+  padding-left: 10px;
+  font-size: 16px;
+}
+
+input:focus {
+  outline: none;
+}
+
+input::placeholder {
+  color: hsla(269, 19%, 21%, 0.527);
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
 #weather {
   box-sizing: border-box;
   margin-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 450px;
+  width: 100%;
   padding: 24px;
   border-radius: 8px;
-  background-color: hsla(271, 10%, 50%, 0.527);
+  color: white;
+  background-color: hsla(269, 19%, 21%, 0.527);
+  box-shadow: 1px 1px 8px hsla(267, 11%, 15%, 0.527);
 }
 
 #weather > div {
@@ -39,4 +87,14 @@ img {
   to {
     transform: rotate(360deg);
   }
+}
+
+button {
+  background-color: hsla(269, 19%, 21%, 0.527);
+  border: none;
+  border-radius: 5px;
+  padding: 6px 24px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
 }

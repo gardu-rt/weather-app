@@ -30,7 +30,7 @@ async function displayDataWeather(data) {
     <div>
       <img src="${Icon.default}" />
       <div>
-        <p>${conditions}</p>
+        <p>📝 ${conditions}</p>
         <p>🌡️ ${temp}°C</p>
         <p>💧 ${humidity}%</p>
       </div>

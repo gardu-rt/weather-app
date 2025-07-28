@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkweather_app=self.webpackChunkweather_app||[]).push([[641],{641:(e,p,s)=>{e.exports=s.p+"img/thunder-showers-day.03133e2a54cdc1e8cf84.svg"}}]);

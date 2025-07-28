@@ -1,6 +1,7 @@
+import "./style.css";
+
 const form = document.querySelector("form");
 const weather = document.querySelector("#weather");
-const img = document.querySelector("img");
 
 async function getWeatherData(location) {
   const API_KEY = "SN26AF45CBKVYDMW2TVU8QSHX";
@@ -20,9 +21,9 @@ async function getWeatherData(location) {
 async function displayDataWeather(data, location) {
   const { temp, humidity, description, icon } = data.days[0];
   const Icon = await import(`./img/${icon}.svg`);
-  img.src = Icon.default;
   weather.innerHTML = `
     <h2>Todays Weather in ${location}</h2>
+    <img src="${Icon.default}" />
     <p>Temp: ${temp}°C</p>
     <p>Humidity: ${humidity}%</p>
     <p>${description}</p>

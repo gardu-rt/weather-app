@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   entry: "./src/index.js",
   output: {
-    filename: "main-[contenthash].js",
+    filename: "script/main-[contenthash].js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
@@ -22,6 +22,9 @@ module.exports = {
       {
         test: /\.(svg|gif|jpg|jpeg|png)$/i,
         type: "asset/resource",
+        generator: {
+          filename: "img/[name].[contenthash][ext]",
+        },
       },
     ],
   },

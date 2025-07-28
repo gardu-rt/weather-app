@@ -11,23 +11,35 @@ async function getWeatherData(location) {
     const response = await fetch(url);
     const data = await response.json();
 
-    displayDataWeather(data, location);
+    displayDataWeather(data);
     console.log(data);
   } catch (err) {
     console.log("Failed to fetch weather data:", err);
   }
 }
 
-async function displayDataWeather(data, location) {
-  const { temp, humidity, description, icon } = data.days[0];
-  const Icon = await import(`./img/${icon}.svg`);
-  weather.innerHTML = `
-    <h2>Todays Weather in ${location}</h2>
-    <img src="${Icon.default}" />
-    <p>Temp: ${temp}°C</p>
-    <p>Humidity: ${humidity}%</p>
-    <p>${description}</p>
+async function displayDataWeather(data) {
+  try {
+    const { temp, humidity, conditions, icon } = data.days[0];
+    const { resolvedAddress } = data;
+    let [a, b, c] = resolvedAddress.split(", ");
+    if (!c) c = b;
+    const Icon = await import(`./img/${icon}.svg`);
+    weather.innerHTML = `
+    <h2>${a}, ${c}</h2>
+    <div>
+      <img src="${Icon.default}" />
+      <div>
+        <p>${conditions}</p>
+        <p>🌡️ ${temp}°C</p>
+        <p>💧 ${humidity}%</p>
+      </div>
+    </div>
   `;
+  } catch (err) {
+    weather.innerHTML = `<p>❌ Fail to load weather data</p>`;
+    console.error(err);
+  }
 }
 
 function getUserLocation() {
@@ -54,13 +66,16 @@ async function reverseGeoCode(lat, lon) {
   const data = await response.json();
 
   if (data && data.results && data.results.length > 0) {
-    return data.results[0].components.village;
+    return data.results[0].components.state;
   } else {
     throw new Error("There is no such location");
   }
 }
 
 async function showWeather() {
+  weather.innerHTML = `
+        <div class="spinner"></div>
+    `;
   const { latitude, longitude } = await getUserLocation();
   const lokasi = await reverseGeoCode(latitude, longitude);
 
@@ -68,6 +83,11 @@ async function showWeather() {
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
+    weather.innerHTML = `
+      <div class="loading-box">
+        <div class="spinner"></div>
+      </div>
+    `;
     const location = form.location.value;
     getWeatherData(location);
     form.reset();

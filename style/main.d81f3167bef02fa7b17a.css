@@ -1,5 +1,10 @@
+:root {
+  --main-color: hsla(269, 19%, 21%, 0.4);
+}
+
 body {
   font-family: Roboto, sans-serif;
+  background: linear-gradient(to right, #74ebd5, #acb6e5);
 }
 
 img {
@@ -20,7 +25,7 @@ h1 {
   display: flex;
   flex-direction: column;
   width: 450px;
-  color: hsla(269, 19%, 21%, 0.527);
+  color: var(--main-color);
 }
 
 form {
@@ -32,12 +37,13 @@ input {
   flex: 1;
   color: white;
   box-sizing: border-box;
-  background-color: hsla(269, 19%, 21%, 0.527);
+  background-color: var(--main-color);
   border: 1px solid transparent;
   border-radius: 5px;
   padding: 5px;
   padding-left: 10px;
   font-size: 16px;
+  box-shadow: 1px 1px 8px hsla(267, 11%, 15%, 0.5);
 }
 
 input:focus {
@@ -45,7 +51,7 @@ input:focus {
 }
 
 input::placeholder {
-  color: hsla(269, 19%, 21%, 0.527);
+  color: var(--main-color);
 }
 
 input:focus::placeholder {
@@ -62,8 +68,8 @@ input:focus::placeholder {
   padding: 24px;
   border-radius: 8px;
   color: white;
-  background-color: hsla(269, 19%, 21%, 0.527);
-  box-shadow: 1px 1px 8px hsla(267, 11%, 15%, 0.527);
+  background-color: var(--main-color);
+  box-shadow: 1px 1px 8px hsla(267, 11%, 15%, 0.5);
 }
 
 #weather > div {
@@ -74,10 +80,10 @@ input:focus::placeholder {
 }
 
 .spinner {
-  margin: 65px;
+  margin: 57px;
   width: 48px;
   height: 48px;
-  border: 5px solid rgba(255, 255, 255, 0.3);
+  border: 5px solid rgba(255, 255, 255, 0.5);
   border-top-color: white;
   border-radius: 50%;
   animation: spin 1s linear infinite;
@@ -90,12 +96,13 @@ input:focus::placeholder {
 }
 
 button {
-  background-color: hsla(269, 19%, 21%, 0.527);
+  background-color: var(--main-color);
   border: none;
   border-radius: 5px;
   padding: 6px 24px;
   color: white;
   font-size: 16px;
   font-weight: 600;
+  box-shadow: 1px 1px 8px hsla(267, 11%, 15%, 0.5);
 }
 
